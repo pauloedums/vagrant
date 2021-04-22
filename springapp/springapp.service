@@ -1,0 +1,15 @@
+[Unit]
+Description=spring app service
+
+[Service]
+User=vagrant
+WorkingDirectory=/srv
+ExecStart=/usr/bin/java -Dspring.profiles.active=mysql -jar spring-petclinic-2.4.0.BUILD-SNAPSHOT.jar
+StandardOutput=file:/var/log/springapp/springapp.out.txt
+StandardError=file:/var/log/springapp/springapp.err.txt
+Type=simple
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
